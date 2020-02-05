@@ -1,3 +1,3 @@
 import { Point } from './Point';
 
-export type ILine = Point[];
+export type Path = Point[];

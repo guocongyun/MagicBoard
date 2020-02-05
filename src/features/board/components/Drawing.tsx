@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { ILine } from 'models/Line';
-import Line from './Line';
+import { Path } from 'models/Path';
+import SvgPath from './SvgPath';
 
 const StyledSvg = styled.svg`
   width: 100%;
@@ -9,13 +9,13 @@ const StyledSvg = styled.svg`
 `;
 
 interface DrawingProps {
-  lines: ILine[];
+  paths: Path[];
 }
 
-const Drawing: FC<DrawingProps> = ({ lines }) => (
+const Drawing: FC<DrawingProps> = ({ paths }) => (
   <StyledSvg>
-    {lines.map((line, i) => (
-      <Line key={i} line={line} />
+    {paths.map((path, i) => (
+      <SvgPath key={i} path={path} />
     ))}
   </StyledSvg>
 );

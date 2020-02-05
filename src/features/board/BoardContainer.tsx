@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Board } from './components';
+import Board from './Board';
 
 const BoardContainer: FC = () => <Board />;
 

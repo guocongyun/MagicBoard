@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { ILine } from 'models/Line';
+import { Path } from 'models/Path';
 
-interface LineProps {
-  line: ILine;
+interface SvgPathProps {
+  path: Path;
 }
 
 const StyledPath = styled.path`
@@ -14,11 +14,11 @@ const StyledPath = styled.path`
   stroke-linecap: round;
 `;
 
-const Line: FC<LineProps> = ({ line }) => {
-  const points = line.map(({ x, y }) => `${x} ${y}`);
+const SvgPath: FC<SvgPathProps> = ({ path }) => {
+  const points = path.map(({ x, y }) => `${x} ${y}`);
   const data = `M ${points[0]} L ${points.join(' ')}`;
 
   return <StyledPath d={data} />;
 };
 
-export default Line;
+export default SvgPath;

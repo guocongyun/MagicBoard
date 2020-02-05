@@ -7,8 +7,8 @@ import React, {
 } from 'react';
 import styled from 'styled-components';
 import { useImmer } from 'use-immer';
-import { ILine } from 'models/Line';
-import Drawing from './Drawing';
+import { Path } from 'models/Path';
+import { Drawing } from './components';
 
 const StyledDiv = styled.div`
   position: absolute;
@@ -17,7 +17,7 @@ const StyledDiv = styled.div`
 `;
 
 const Board: FC = () => {
-  const [lines, setLines] = useImmer<ILine[]>([]);
+  const [paths, setPaths] = useImmer<Path[]>([]);
   const [isDrawing, setIsDrawing] = useState(false);
 
   const handleMouseDown = useCallback<MouseEventHandler>(
@@ -25,22 +25,22 @@ const Board: FC = () => {
       if (button !== 0) return;
 
       setIsDrawing(true);
-      setLines(draft => {
+      setPaths(draft => {
         draft.push([{ x, y }]);
       });
     },
-    [setLines],
+    [setPaths],
   );
 
   const handleMouseMove = useCallback<MouseEventHandler>(
     ({ clientX: x, clientY: y }) => {
       if (!isDrawing) return;
 
-      setLines(draft => {
+      setPaths(draft => {
         draft[draft.length - 1].push({ x, y });
       });
     },
-    [isDrawing, setLines],
+    [isDrawing, setPaths],
   );
 
   const handleMouseUp = useCallback(() => {
@@ -48,8 +48,8 @@ const Board: FC = () => {
   }, []);
 
   const handleClear = useCallback(() => {
-    setLines(() => []);
-  }, [setLines]);
+    setPaths(() => []);
+  }, [setPaths]);
 
   useEffect(() => {
     document.addEventListener('mouseup', handleMouseUp);
@@ -59,7 +59,7 @@ const Board: FC = () => {
   return (
     <>
       <StyledDiv onMouseDown={handleMouseDown} onMouseMove={handleMouseMove}>
-        <Drawing lines={lines} />
+        <Drawing paths={paths} />
       </StyledDiv>
       <button
         style={{ position: 'absolute', left: '50%', top: '20px' }}
