@@ -1,0 +1,28 @@
+image: node:12.14.1
+
+variables:
+  CI: 'true'
+
+cache:
+  paths:
+    - node_modules/
+
+before_script:
+  - npm install
+
+lint:
+  stage: test
+  script:
+    - npm run lint && npm run type-check
+
+pages:
+  stage: deploy
+  script:
+    - npm run build
+    - rm -rf public
+    - mv build public
+  artifacts:
+    paths:
+      - public
+  only:
+    - master
