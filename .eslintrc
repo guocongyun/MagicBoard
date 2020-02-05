@@ -6,12 +6,11 @@
       "modules": true
     }
   },
-  "plugins": ["@typescript-eslint", "jest", "react"],
+  "plugins": ["@typescript-eslint", "react"],
   "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb-base", "plugin:@typescript-eslint/recommended"],
   "rules": {
     "import/extensions": "off",
     "import/prefer-default-export": "off",
-    "no-restricted-globals": "off",
     "no-plusplus": "off",
     "react/no-deprecated": "error",
     "react/display-name": "off",
@@ -99,12 +98,11 @@
     "jsx-quotes": ["error", "prefer-double"]
   },
   "env": {
-    "jest/globals": true,
     "browser": true
   },
   "settings": {
     "react": {
-      "version": "16.8.6"
+      "version": "16.12.0"
     }
   },
   "globals": {
@@ -112,9 +110,9 @@
     "TEST": true
   },
   "overrides": [{
-    "files": ["src/theme/icons/*.tsx"],
+    "files": ["**/*.tsx"],
     "rules": {
-      "max-len": "off"
+      "react/prop-types": "off"
     }
   }]
 }
