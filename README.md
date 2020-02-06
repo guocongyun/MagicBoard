@@ -1,5 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Prerequisites
 
 * Node.js (can be installed from [here](https://nodejs.org/en))
@@ -27,6 +25,25 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `yarn lint`
+
+Run linter on the source files
+
+### `yarn lint-fix`
+
+Fixes fixable linter problems.
+
+There may be some problems the linter cannot fix by itself. In that case you will have to fix them yourself.
+
+### `yarn type-check`
+
+Runs TypeScript compiler to type-check the source files.
+
+### `yarn type-check-watch`
+
+Continuously type-checks the source files by watching for new changes.
+
 
 ### `yarn eject`
 
