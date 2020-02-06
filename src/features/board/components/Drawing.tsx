@@ -15,7 +15,7 @@ interface DrawingProps {
 const Drawing: FC<DrawingProps> = ({ paths }) => (
   <StyledSvg>
     {paths.map((path, i) => (
-      <SvgPath key={i} path={path} />
+      <SvgPath key={i} path={path} width={3} />
     ))}
   </StyledSvg>
 );
