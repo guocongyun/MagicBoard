@@ -10,7 +10,7 @@ import { useImmer } from 'use-immer';
 import { Path } from 'models/Path';
 import { Drawing } from './components';
 
-const StyledDiv = styled.div`
+const StyledSvg = styled.svg`
   position: absolute;
   width: 100%;
   height: 100%;
@@ -25,8 +25,8 @@ const Board: FC = () => {
       if (button !== 0) return;
 
       setIsDrawing(true);
-      setPaths(draft => {
-        draft.push([{ x, y }]);
+      setPaths(paths => {
+        paths.push([{ x, y }]);
       });
     },
     [setPaths],
@@ -36,8 +36,8 @@ const Board: FC = () => {
     ({ clientX: x, clientY: y }) => {
       if (!isDrawing) return;
 
-      setPaths(draft => {
-        draft[draft.length - 1].push({ x, y });
+      setPaths(paths => {
+        paths[paths.length - 1].push({ x, y });
       });
     },
     [isDrawing, setPaths],
@@ -58,9 +58,9 @@ const Board: FC = () => {
 
   return (
     <>
-      <StyledDiv onMouseDown={handleMouseDown} onMouseMove={handleMouseMove}>
+      <StyledSvg onMouseDown={handleMouseDown} onMouseMove={handleMouseMove}>
         <Drawing paths={paths} />
-      </StyledDiv>
+      </StyledSvg>
       <button
         style={{ position: 'absolute', left: '50%', top: '20px' }}
         onClick={handleClear}
