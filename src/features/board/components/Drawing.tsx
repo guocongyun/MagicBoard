@@ -4,12 +4,13 @@ import Polyline from './Polyline';
 
 interface DrawingProps {
   paths: Path[];
+  color: string;
+  width: number;
 }
-
-const Drawing: FC<DrawingProps> = ({ paths }) => (
+const Drawing: FC<DrawingProps> = ({ paths, width, color }) => (
   <>
     {paths.map((path, i) => (
-      <Polyline key={i} path={path} width={3} />
+      <Polyline key={i} path={path} width={width} color={color}/>
     ))}
   </>
 );
